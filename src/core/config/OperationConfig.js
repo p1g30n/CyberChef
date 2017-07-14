@@ -90,6 +90,7 @@ const OperationConfig = {
         highlightReverse: true, // [optional] same as above but for the reverse of the operation (output to input highlighting)
         manualBake: false, // [optional] true if auto-bake should be disabled when this operation is added to the recipe
         args: [ // A list of the arguments that the user will be presented with
+            
             {
                 name: "Output Format",
                 type: "option", // the argument data type, see the next section for valid types
@@ -104,7 +105,12 @@ const OperationConfig = {
                 name: "Linebreak Delimiter",
                 type: "binaryShortString",
                 value: Runes.LINEBREAK_DELIMITER
-            }
+            },
+            {
+                name: "Only translate Runes (UTF-8 | UTF-16)",
+                type: "boolean",
+                value: Runes.RUNES_ONLY
+            }            
 
         ]
     },

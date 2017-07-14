@@ -7,6 +7,7 @@ const Runes = {
     OUTPUT_FORMAT: ["Gematria", "UTF-8", "UTF-16"],
     OUTPUT_DELIMITER: ", ",
     LINEBREAK_DELIMITER: "",
+    RUNES_ONLY: true,
 
     runRunes: function(input, args) {
 		// UTF-8 Function
@@ -74,6 +75,7 @@ const Runes = {
         let output = args[0]; // Output Format Option
         let delimiter = args[1]; // Output Delimiter Option
         let linebreak = args[2];
+        let runesonly = args[3];
         let result = "";
 
 
@@ -95,6 +97,9 @@ const Runes = {
         		}
                 else if (input[i] == linebreak) {
                 	result += "\n";
+                }
+                else if (!runesonly) {
+                	buffer += input[i];
                 }        		
             }
             result = toUTF8Array(buffer).join(delimiter);
@@ -106,6 +111,9 @@ const Runes = {
         		}
                 else if (input[i] == linebreak) {
                 	result += "\n";
+                }
+                else if (!runesonly) {
+                	result += input.charCodeAt(i)+delimiter;
                 }
         	}
         }        
