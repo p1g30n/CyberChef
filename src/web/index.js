@@ -25,6 +25,7 @@ import OperationConfig from "../core/config/OperationConfig.js";
  */
 function main() {
     const defaultFavourites = [
+        "Runes",
         "To Base64",
         "From Base64",
         "To Hex",

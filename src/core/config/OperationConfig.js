@@ -1,3 +1,4 @@
+import Runes from "../operations/Runes.js";
 import FlowControl from "../FlowControl.js";
 import Base from "../operations/Base.js";
 import Base58 from "../operations/Base58.js";
@@ -80,6 +81,33 @@ import UUID from "../operations/UUID.js";
  * @type {Object.<string, OpConf>}
  */
 const OperationConfig = {
+    "Runes": {
+        description: "Futhark Rune Translations",
+        run: Runes.runRunes, // a reference to the function that runs your operation 
+        inputType: "string", // the input type for your operation, see the next section for valid types
+        outputType: "string", // the output type for your operation, see the next section for valid types
+        highlight: true, // [optional] true if the operation does not change the position of bytes in the output (so that highlighting can be calculated)
+        highlightReverse: true, // [optional] same as above but for the reverse of the operation (output to input highlighting)
+        manualBake: false, // [optional] true if auto-bake should be disabled when this operation is added to the recipe
+        args: [ // A list of the arguments that the user will be presented with
+            {
+                name: "Output Format",
+                type: "option", // the argument data type, see the next section for valid types
+                value: Runes.OUTPUT_FORMAT // the default value of the argument
+            },
+            {
+                name: "Output Delimiter",
+                type: "binaryShortString",
+                value: Runes.OUTPUT_DELIMITER
+            },
+            {
+                name: "Linebreak Delimiter",
+                type: "binaryShortString",
+                value: Runes.LINEBREAK_DELIMITER
+            }
+
+        ]
+    },
     "Fork": {
         description: "Split the input data up based on the specified delimiter and run all subsequent operations on each branch separately.<br><br>For example, to decode multiple Base64 strings, enter them all on separate lines then add the 'Fork' and 'From Base64' operations to the recipe. Each string will be decoded separately.",
         run: FlowControl.runFork,

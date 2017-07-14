@@ -25,6 +25,7 @@ const Categories = [
     {
         name: "Data format",
         ops: [
+            "Runes",
             "To Hexdump",
             "From Hexdump",
             "To Hex",
